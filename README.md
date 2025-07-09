@@ -183,8 +183,8 @@ Both scripts will create multiple video copies from this original for stream sim
 ### 🧠 4. Run the CPU Stream Pipeline
 
 ```bash
-chmod +x scripts/boom.sh
-./scripts/boom.sh
+chmod +x scriptFinal/boom.sh
+./scriptFinal/boom.sh
 ```
 
 - Spawns X streams, X is mentioned in the scripts (one stream per GNOME terminal)
@@ -198,8 +198,8 @@ chmod +x scripts/boom.sh
 > ⚠️ This didn't perform well in testing — acceleration fell back to CPU.
 
 ```bash
-chmod +x scripts/boom_gpu.sh
-./scripts/boom_gpu.sh
+chmod +x scriptFinal_GPU/boom_gpu.sh
+./scriptFinal_GPU/boom_gpu.sh
 ```
 
 - Logs saved at: `~/scriptFinal_GPU/log/gpu_stream_X.log`
