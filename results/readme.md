@@ -9,5 +9,6 @@ This directory contains **screen recordings** from the execution of the DLStream
 - `4_streams.mp4` - CPU pipeline running with four streams (heavy load)
 - `gpu_execution` – GPU-based execution attempt that resulted in a crash or fallback
 - `crash.mp4`- CPU execution crashes with 10 concurrent streams
+- `and the log files`
 
 > These recordings help visualize the pipeline behavior under different workloads and hardware targets.
