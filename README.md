@@ -36,7 +36,7 @@ Each stream launches a GStreamer pipeline performing:
 
 ```bash
 filesrc → decodebin → gvadetect → gvaclassify → gvawatermark → fpsdisplaysink
-
+```
 ## 🚀 How to Run This Project
 
 ### 🔧 1. Install & Set Up DLStreamer Environment
