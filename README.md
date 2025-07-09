@@ -11,7 +11,7 @@ This repository documents the Intel Unnati Internship project focused on evaluat
 | **Processor**        | Intel Core i5-1235U (10-core)  |
 | **Integrated GPU**   | Intel Iris Xe Graphics         |
 | **RAM**              | 8 GB                           |
-| **Storage**          | SSD                            |
+| **Storage**          | SSD                            |  
 | **Operating System** | Ubuntu 24.04 LTS               |
 | **DLStreamer Target**| CPU&iGPU(Iris Xe) benchmarking |
 
@@ -132,20 +132,55 @@ Then apply it:
 source ~/.bashrc
 ```
 
+## 📁 Project Structure & File Setup
 
-### 📼 2. Place Your Input Video
+Organize your project like this to keep CPU and GPU tests cleanly separated:
 
-Place the test video here:
+```
+dlstreamer-project/
+├── scriptFinal/                  # CPU version
+│   ├── boom.sh                   # CPU streaming script
+│   └── log/                      # Logs generated during CPU runs
+├── scriptFinal_GPU/             # GPU version
+│   ├── boom_gpu.sh              # GPU streaming script
+│   └── log/                      # Logs generated during GPU runs
+├── models/                      # OpenVINO models go here
+│   ├── person-detection-retail-0013/
+│   └── person-attributes-recognition-crossroad-0230/
+├── README.md
+```
+
+---
+
+### 📂 2.Place the Scripts
+
+- Place the **CPU script** (`boom.sh`) inside the `scriptFinal/` directory.
+- Place the **GPU script** (`boom_gpu.sh`) inside the `scriptFinal_GPU/` directory.
+
+Each script automatically creates its own `log/` folder inside its directory during runtime if it doesn’t already exist.
+
+Make both scripts executable:
+
+```bash
+chmod +x scriptFinal/boom.sh
+chmod +x scriptFinal_GPU/boom_gpu.sh
+```
+
+---
+
+### 3.📼 Place the Input Video
+
+Place your input video here:
 
 ```bash
 ~/Downloads/testingnew.mp4
 ```
 
-The script will clone it for each parallel stream.
+Both scripts will create multiple video copies from this original for stream simulation.
 
 ---
 
-### 🧠 3. Run the CPU Stream Pipeline
+### 🧠 4. Run the CPU Stream Pipeline
 
 ```bash
 chmod +x scripts/boom.sh
@@ -158,7 +193,7 @@ chmod +x scripts/boom.sh
 
 ---
 
-### 💻 4. Run the GPU Stream Pipeline (Optional)
+### 💻 5. Run the GPU Stream Pipeline (Optional)
 
 > ⚠️ This didn't perform well in testing — acceleration fell back to CPU.
 
@@ -171,7 +206,7 @@ chmod +x scripts/boom_gpu.sh
 
 ---
 
-### 📝 5. Notes & Tips
+### 📝 6. Notes & Tips
 
 - Ensure `gnome-terminal` is installed for parallel stream launching.
 - Avoid using more than 8 streams on an 8 GB RAM system to prevent OOM issues.
