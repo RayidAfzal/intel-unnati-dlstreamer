@@ -15,25 +15,25 @@ This repository documents the Intel Unnati Internship project focused on evaluat
 | **Operating System** | Ubuntu 24.04 LTS               |
 | **DLStreamer Target**| CPU-only (this phase)          |
 
-> Note: iGPU-based benchmarks may be explored later in a separate phase.
+> Note: iGPU-based benchmarks were attempted but failed due to acceleration issues.
 
 ---
 
 ## 🧪 Models Used
 
-| Task            | Model Name                                       | Format        |
-|-----------------|--------------------------------------------------|---------------|
+| Task            | Model Name                                       | Format             |
+|-----------------|--------------------------------------------------|--------------------|
 | Object Detection| `person-detection-retail-0013`                   | OpenVINO IR (FP16) |
 | Classification  | `person-attributes-recognition-crossroad-0230`  | OpenVINO IR (FP16) |
 
-- **Model Proc Files** were taken from the DLStreamer sample directory:  
+- **Model Proc Files** were sourced from the DLStreamer sample directory:  
   `/opt/intel/dlstreamer/samples/gstreamer/model_proc/intel/`
 
 ---
 
 ## 🎞️ Pipeline Description
 
-Each stream launches a GStreamer pipeline performing decode → detect → classify → display:
+Each stream launches a GStreamer pipeline performing:
 
 ```bash
 filesrc → decodebin → gvadetect → gvaclassify → gvawatermark → fpsdisplaysink
