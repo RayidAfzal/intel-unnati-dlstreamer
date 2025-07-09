@@ -7,15 +7,14 @@ This repository documents the Intel Unnati Internship project focused on evaluat
 ## 🧠 System Configuration
 
 | Component            | Details                        |
-|---------------------|--------------------------------|
+|----------------------|--------------------------------|
 | **Processor**        | Intel Core i5-1235U (10-core)  |
 | **Integrated GPU**   | Intel Iris Xe Graphics         |
 | **RAM**              | 8 GB                           |
 | **Storage**          | SSD                            |
 | **Operating System** | Ubuntu 24.04 LTS               |
-| **DLStreamer Target**| CPU-only (this phase)          |
+| **DLStreamer Target**| CPU&iGPU(Iris Xe) benchmarking |
 
-> Note: iGPU-based benchmarks were attempted but failed due to acceleration issues.
 
 ---
 
