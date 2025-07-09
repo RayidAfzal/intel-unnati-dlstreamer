@@ -41,7 +41,7 @@ filesrc → decodebin → gvadetect → gvaclassify → gvawatermark → fpsdisp
 
 ### 🔧 1. Install & Set Up DLStreamer Environment
 
-Follow the official guide:  
+You can also follow the official guide:  
 https://dlstreamer.github.io/get_started/install/install_guide_ubuntu.html
 
 ---
