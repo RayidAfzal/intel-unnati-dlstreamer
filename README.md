@@ -43,7 +43,7 @@ filesrc → decodebin → gvadetect → gvaclassify → gvawatermark → fpsdisp
 
 Follow the official steps from Intel’s docs:
 
-https://dlstreamer.github.io/dev_guide/advanced_install/advanced_install_guide_index.html
+https://dlstreamer.github.io/get_started/install/install_guide_ubuntu.html
 
 1. Install prerequisites and DLStreamer via APT:
    ```bash
