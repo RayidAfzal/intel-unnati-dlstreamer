@@ -261,7 +261,7 @@ This project was developed by **Rayid M. Afzal**, **Ebin Soyan**, and **Aswin S.
 during the **Intel Unnati Internship**, Summer 2025.
 
 Special thanks to:
-- Arun kumar Sir for support during the project
+- Arun Sebastian Sir for support during the project
 - Saintgits college of engineering foir the support
 
 > Built with caffeine, confusion, and unconditional love for real-time pipelines 🧠
