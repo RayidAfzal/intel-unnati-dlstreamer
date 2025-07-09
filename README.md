@@ -244,6 +244,33 @@ chmod +x scriptFinal_GPU/boom_gpu.sh
 
 ---
 
+---
+
+## 📊 Outcomes
+
+- Successfully deployed and tested **DLStreamer video pipelines** on a CPU-only system using Intel Iris Xe hardware.
+- Achieved real-time inference with **up to 3 simultaneous streams**; stable performance observed up to 2 streams.
+- Implemented and validated a **modular shell script-based launcher** for stress testing pipelines.
+- Gathered stream-wise FPS benchmarks, confirming **scalability limits** of the hardware and DLStreamer configuration.
+
+---
+
+## 🚧 Limitations
+
+- **GPU fallback issue:** Despite specifying `device=GPU`, inference appeared to run on CPU due to misconfiguration or driver limitations with VAAPI/OpenCL.
+- **Memory bottleneck:** The system’s 8GB RAM led to heavy **swap usage** beyond 5–6 streams, degrading performance significantly.
+- **Crash on scaling:** Running more than 8 CPU streams triggered the Linux OOM killer due to memory exhaustion.
+
+---
+
+## 🚀 Future Scope
+
+- Investigate and resolve **GPU acceleration issues**, ensuring proper offload via VAAPI or OneVPL.
+- Test the pipeline on systems with **higher RAM and dedicated GPUs** (Arc, Xe MAX, etc.) to explore full scalability.
+- Expand script support to include **stream cleanup**, **resource monitoring**, and **auto-restart** on crash.
+- Benchmark with more complex models (e.g., YOLOv8, face detection) and introduce **stream sync** across terminals.
+
+
 ## 📄 License
 
 ```
