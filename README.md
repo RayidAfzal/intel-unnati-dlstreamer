@@ -187,7 +187,7 @@ chmod +x scripts/boom.sh
 ./scripts/boom.sh
 ```
 
-- Spawns 10 streams (one per GNOME terminal)
+- Spawns X streams, X is mentioned in the scripts (one stream per GNOME terminal)
 - Runs each pipeline using CPU
 - Logs output: `~/scriptFinal/log/cpu_stream_X.log`
 
