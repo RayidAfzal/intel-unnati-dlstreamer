@@ -212,3 +212,58 @@ chmod +x scriptFinal_GPU/boom_gpu.sh
 - Avoid using more than 8 streams on an 8 GB RAM system to prevent OOM issues.
 - Logs include `fpsdisplaysink` outputs, inference times, and crash info.
 
+---
+
+## 📊 Results & Observations
+
+| Device | Streams | Avg FPS | Notes               |
+|--------|---------|---------|---------------------|
+| CPU    | 1       | 22.42   | Stable              |
+| CPU    | 2       | 10.26   | Minor degradation   |
+| CPU    | 3       | 6.35    | Acceptable          |
+| CPU    | 4       | 4.34    | Manageable          |
+| CPU    | 5       | 3.27    | Lag noticeable      |
+| CPU    | 6       | 2.73    | Degraded experience |
+| CPU    | 7       | 1.92    | Severe lag          |
+| CPU    | 8       | 1.08    | Swap maxed          |
+| CPU    | 9       | –       | Crash (OOM)         |
+| GPU    | 1       | 0.2     | Freezing            |
+| GPU    | 2       | –       | Crash               |
+
+---
+
+## 💥 Bottleneck Analysis
+
+- **❌ GPU Acceleration Failed**: Inference stayed on CPU despite setting `device=GPU`. Possible issues: VAAPI config, model incompatibility, or driver-level fallback. `intel_gpu_top` confirmed near-zero GPU usage.
+
+- **🔥 CPU Saturation**: Beyond 6 streams, 8GB RAM was maxed and system began swapping heavily.
+
+- **💾 Swap Pressure**: Swap usage hit 80% at 7 streams. Crashes began at 9.
+
+- **💀 OOM Killer**: At 9 streams, system crashed without freeing pipeline — classic OOM-killer termination.
+
+---
+
+## 📄 License
+
+```
+MIT License
+
+This project was developed as part of the Intel Unnati Internship Program.
+Feel free to reuse, modify, or build upon this work — just credit the original authors.
+```
+
+---
+
+## 🙏 Credits
+
+This project was developed by **Rayid M. Afzal**, **Ebin Soyan**, and **Aswin S.**
+during the **Intel Unnati Internship**, Summer 2025.
+
+Special thanks to:
+- Arun kumar Sir for support during the project
+- Saintgits college of engineering foir the support
+
+> Built with caffeine, confusion, and unconditional love for real-time pipelines 🧠
+> 
+---
