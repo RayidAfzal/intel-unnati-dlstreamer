@@ -1,34 +1,39 @@
 # Intel Unnati Internship – DLStreamer CPU Pipeline Stress Test
 
-This project is part of the **Intel Unnati Internship** and explores the performance of **Intel DLStreamer** using **CPU-only GStreamer pipelines** for video analytics. It benchmarks the ability to process **multiple parallel video streams** using pre-trained OpenVINO models for object detection and classification.
+This repository documents the Intel Unnati Internship project focused on evaluating the performance of **Intel DLStreamer** on a system with Intel Iris Xe graphics. The goal was to test real-time video inference pipelines using **OpenVINO-compatible models** running on both **CPU** and **iGPU (Iris Xe)**.
 
 ---
 
-## 🧠 System Specs
+## 🧠 System Configuration
 
-- **Device:** Laptop with Intel Iris Xe iGPU
-- **Execution Target:** CPU (no GPU acceleration used)
-- **OS:** Ubuntu (GNOME Terminal environment)
-- **Parallel Streams Tested:** Up to 10
-- **Video Input:** Cloned copies of a single MP4 file
+| Component            | Details                        |
+|---------------------|--------------------------------|
+| **Processor**        | Intel Core i5-1235U (10-core)  |
+| **Integrated GPU**   | Intel Iris Xe Graphics         |
+| **RAM**              | 8 GB                           |
+| **Storage**          | SSD                            |
+| **Operating System** | Ubuntu 24.04 LTS               |
+| **DLStreamer Target**| CPU-only (this phase)          |
+
+> Note: iGPU-based benchmarks may be explored later in a separate phase.
 
 ---
 
 ## 🧪 Models Used
 
-| Purpose        | Model Name                                       | Framework  |
-|----------------|--------------------------------------------------|------------|
-| Detection      | person-detection-retail-0013                     | OpenVINO IR (FP16) |
-| Classification | person-attributes-recognition-crossroad-0230    | OpenVINO IR (FP16) |
+| Task            | Model Name                                       | Format        |
+|-----------------|--------------------------------------------------|---------------|
+| Object Detection| `person-detection-retail-0013`                   | OpenVINO IR (FP16) |
+| Classification  | `person-attributes-recognition-crossroad-0230`  | OpenVINO IR (FP16) |
 
-> JSON-based `model-proc` files from DLStreamer sample paths were used for post-processing.
+- **Model Proc Files** were taken from the DLStreamer sample directory:  
+  `/opt/intel/dlstreamer/samples/gstreamer/model_proc/intel/`
 
 ---
 
-## 🛠️ Pipeline Overview
+## 🎞️ Pipeline Description
 
-Each stream runs this GStreamer pipeline:
+Each stream launches a GStreamer pipeline performing decode → detect → classify → display:
 
 ```bash
-filesrc ! decodebin ! \
-gvadetect ! gvaclassify ! gvawatermark ! videoconvert ! fpsdisplaysink
+filesrc → decodebin → gvadetect → gvaclassify → gvawatermark → fpsdisplaysink
